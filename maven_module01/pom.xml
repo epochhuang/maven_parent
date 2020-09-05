@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!--父工程的坐标，IDEA自动生成-->
+    <parent>
+        <artifactId>maven_parent</artifactId>
+        <groupId>com.epochhuang.maven</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--子工程只需指定模块名，其他信息继承自父工程-->
+    <artifactId>maven_module01</artifactId>
+
+    <dependencies>
+        <!--依赖maven_module02-->
+        <dependency>
+            <groupId>com.epochhuang.maven</groupId>
+            <artifactId>maven_module02</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <exclusions>
+                <!--配置对commons-logging的排除-->
+                <exclusion>
+                    <!--排除无需指定version-->
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!--
+            对父工程声明依赖的引用，这是真的依赖
+            无需指定版本信息，版本信息继承自父工程
+        -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

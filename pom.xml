@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.epochhuang.maven</groupId>
+    <artifactId>maven_parent</artifactId>
+    <!--
+        父工程的打包方式必须是pom，这是自动生成的
+        打包方式为pom的工程中，不能书写java代码
+        父工程仅仅作为管理其他工程的工程
+    -->
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <!--聚合信息，也是自动生成的-->
+    <modules>
+        <module>maven_module01</module>
+        <module>maven_module02</module>
+        <module>maven_module03</module>
+        <module>model04</module>
+
+        <module>C</module>
+        <module>B</module>
+    </modules>
+
+    <!--声明可以在后面引用的属性值，便于统一管理版本信息-->
+    <properties>
+        <spring.version>5.2.8.RELEASE</spring.version>
+    </properties>
+
+    <!--依赖管理器，并不是真的依赖，只是依赖的声明，可以被子工程引用-->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-orm</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>
